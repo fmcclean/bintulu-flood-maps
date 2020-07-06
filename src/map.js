@@ -18,8 +18,8 @@ angular.module('app', [])
                 geotiffLayer = L.leafletGeotiff(`data/run_${run.id}_maxdepth.tiff`, {
                     renderer: L.LeafletGeotiff.plotty({
                         clampLow: false,
-                        isplayMin: 0.1,
-                        displayMax: 10,
+                        displayMin: 10,
+                        displayMax: 1000,
                         colorScale: 'viridis'
                     })
                 }).addTo(map);
