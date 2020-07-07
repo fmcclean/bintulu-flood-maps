@@ -1,7 +1,7 @@
 
 angular.module('app', [])
     .service('MapService', function () {
-        const map = L.map('mapid').setView([3.0792, 113.3956], 10);
+        const map = L.map('mapid').setView([3.0792, 113.3956], 11);
 
         L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
