@@ -35,13 +35,7 @@ angular.module('app', [])
 
         legend.addTo(map);
 
-
-        return {
-            getMap: function () {return map},
-            updateOpacity: function (opacity) {geotiffLayer.setOpacity(opacity)},
-            updateGeotiffLayer: function (run) {
-                if (geotiffLayer) {geotiffLayer.remove()}
-                geotiffLayer = L.leafletGeotiff(`data/return_periods.tif`, {
+        geotiffLayer = L.leafletGeotiff(`data/return_periods.tif`, {
                     renderer: L.LeafletGeotiff.plotty({
                         clampLow: false,
                         displayMin: displayMin,
@@ -49,46 +43,14 @@ angular.module('app', [])
                         colorScale: 'return-periods'
                     })
                 }).addTo(map);
-                geotiffLayer.setOpacity(0.5)
-            }
 
+
+        return {
+            updateOpacity: function (opacity) {geotiffLayer.setOpacity(opacity)}
         }
     })
 
     .controller('RunController', function(MapService, $scope){
-
-        this.runs = [
-            {id: 755, returnPeriod: 10, duration: 1}
-            ];
-
-        this.durations = [1];
-        this.returnPeriods = [10];
-        this.returnPeriod = 0
-        this.duration = 0
-
-        this.updateRun = function () {
-
-            this.returnPeriod = this.returnPeriods.indexOf(this.run.returnPeriod);
-            this.duration = this.durations.indexOf(this.run.duration);
-
-        };
-
-
-        this.findRun = function () {
-            let returnPeriod = this.returnPeriods[this.returnPeriod];
-            let duration = this.durations[this.duration];
-            for (let i=0; i < this.runs.length; i++) {
-                let run = this.runs[i];
-                if (run.returnPeriod === returnPeriod && run.duration === duration) {
-                    this.run = run;
-                    break
-                }
-            }
-
-            MapService.updateGeotiffLayer(this.run)
-        };
-
-        this.findRun()
 
         this.updateOpacity = function () {
             MapService.updateOpacity(this.opacity)

@@ -18,7 +18,7 @@ html {
 }
 
 #sliders {
-    width:calc(~"100vh - 80px");
+    /*width:calc(~"100vh - 80px");*/
     pointer-events: all;
     height:40px;
     position:absolute;
