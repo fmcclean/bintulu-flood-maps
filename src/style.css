@@ -53,6 +53,14 @@ html {
     opacity: 0.7;
 }
 
+.legend .circle {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-top: 4px;
+    border:1.5px solid black;
+}
+
 #box {
     pointer-events: none;
     background: none !important;
